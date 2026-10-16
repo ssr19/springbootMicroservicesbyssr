@@ -1,0 +1,20 @@
+package com.example.demo.contollers;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+
+import com.example.demo.config.FeignClientConfig;
+
+@Component
+//@FeignClient(name = "sbtestrestservice", url = "http://localhost:8087", configuration = FeignClientConfig.class)
+@FeignClient(name = "sbtestrestservice", configuration = FeignClientConfig.class)
+public interface OrderClient {
+
+	@GetMapping("/order/{orderId}")
+	String processOrder(@PathVariable String orderId);
+	
+	
+	
+}

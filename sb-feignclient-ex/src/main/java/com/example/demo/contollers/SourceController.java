@@ -1,0 +1,33 @@
+package com.example.demo.contollers;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+
+import com.example.demo.service.OrderCientService;
+
+@RestController
+@RequestMapping("/fngclient")
+public class SourceController {
+
+	Logger logger=LoggerFactory.getLogger(SourceController.class); 
+	
+	OrderCientService orderCientService;
+	
+	SourceController(OrderCientService orderCientService){
+		this.orderCientService=orderCientService;
+	}
+	
+	@GetMapping("/{orderId}")
+	public ResponseEntity<String> confirmOrder(@PathVariable String orderId) {
+		logger.info("Feing Source Received order request for OrderId:"+orderId);
+		orderCientService.orderService(orderId);
+		return ResponseEntity.ok("Feing Source Received order request for OrderId:"+orderId) ;
+	}
+	
+	
+}

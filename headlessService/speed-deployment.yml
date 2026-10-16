@@ -1,0 +1,25 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: speeddeployment
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: speed
+  template:
+    metadata:
+      labels:
+        app: speed
+    spec:
+      containers:
+      - name: speedcontainer
+        image: techsriman/speeddep:4.0
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 8080
+          name: tomcatport
+          protocol: TCP

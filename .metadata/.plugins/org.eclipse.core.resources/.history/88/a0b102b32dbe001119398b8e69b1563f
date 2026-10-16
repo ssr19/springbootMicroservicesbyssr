@@ -1,0 +1,7 @@
+spring.application.name=sb-feignclient-ex
+
+eureka.client.service-url.defaultZone=http://localhost:8761/eureka/
+
+
+logging.level.feign = FULL
+logging.level.com.example.demo=DEBUG

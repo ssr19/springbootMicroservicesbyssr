@@ -1,0 +1,18 @@
+package com.example.demo.service;
+
+import com.example.demo.contollers.OrderClient;
+
+public class OrderCientService {
+
+	OrderClient orderClient;
+	
+	public void orderClientService(OrderClient orderClient) {
+		this.orderClient=orderClient;
+	}
+	
+	public String orderService(String orderId) {
+		
+		String response = orderClient.processOrder(orderId);
+		return response;
+	}
+}

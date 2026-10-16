@@ -1,0 +1,26 @@
+package com.example.demo.config;
+
+import java.io.IOException;
+import java.lang.reflect.Type;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
+
+import feign.FeignException;
+import feign.Response;
+import feign.codec.DecodeException;
+import feign.codec.Decoder;
+
+public class CustomErrorDecoder implements Decoder{
+
+	
+	@Override
+	public Object decode(Response response, Type type) throws IOException, DecodeException, FeignException {
+		// TODO Auto-generated method stub
+		if(response.status() == 404 ||  response.status() == 500) {
+			return new RuntimeException("Product Not Found");
+		}
+		//return new RuntimeException("Generic Error:"+response.status());
+			return response.body().asInputStream().toString();
+	}
+
+}

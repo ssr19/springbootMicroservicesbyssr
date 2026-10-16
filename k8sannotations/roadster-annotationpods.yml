@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: roadsterpod
+  labels:
+    app: roadster
+  annotations:
+    license: Apache 2.0 License
+    warranty: limited warranty
+spec:
+  containers:
+    - name: roadster
+      image: techsriman/roadster:1.0
+      ports:
+        - containerPort: 8080
+          name: tomcatcat
+          protocol: TCP

@@ -1,0 +1,13 @@
+package com.example.demo.contollers;
+
+import org.springframework.cloud.openfeign.FeignClient;
+import org.springframework.stereotype.Component;
+
+@Component
+public interface OrderClient {
+
+	@FeignClient(name = "Order_service", path = "localhost://8080" )
+	processOrder();
+	
+	
+}

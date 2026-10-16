@@ -1,0 +1,42 @@
+package com.example.demo.config;
+
+import java.util.UUID;
+import java.util.concurrent.TimeUnit;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+
+import feign.Logger;
+import feign.Request;
+import feign.RequestInterceptor;
+import feign.RequestTemplate;
+import feign.Retryer;
+
+@Configuration
+public class FeignClientConfig {
+
+@Bean	
+public Logger.Level getFeignLoggerLevel(){
+	
+	return Logger.Level.FULL;
+}
+
+@Bean
+public Request.Options options(){
+	return new Request.Options(3000, 5000 );
+	//return new Request.Options(3,TimeUnit.SECONDS,5,TimeUnit.SECONDS );
+}
+@Bean
+public Retryer retryer() {
+	return new Retryer.Default(1L, 2L, 3);
+}
+
+@Bean
+public RequestInterceptor requestInterceptor() {
+	return RequestTemplate requestTemplate -> {
+		requestTemplate.header("X-corelation-Id", UUID.randomUUID());
+	};
+}
+
+
+}

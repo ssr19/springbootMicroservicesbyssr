@@ -1,0 +1,27 @@
+package com.example.demo.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.stereotype.Service;
+
+import com.example.demo.contollers.OrderClient;
+
+@Service
+public class OrderCientService {
+
+	Logger logger = LoggerFactory.getLogger(OrderCientService.class);
+	
+	OrderClient orderClient;
+	
+	OrderCientService(OrderClient orderClient) {
+		this.orderClient=orderClient;
+	}
+	
+	public String orderService(String orderId) {
+		String response = orderClient.processOrder(orderId);
+		logger.info(" Order feign client started {}",response);
+		
+		
+		return response;
+	}
+}

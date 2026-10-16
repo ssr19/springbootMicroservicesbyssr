@@ -1,0 +1,12 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  name: demopod
+spec:
+  containers:
+  - name: demo
+    image: ssrtech/demo:0.0.1-SNAPSHOT
+    ports:
+      - containerPort: 80
+        name: http
+        protocol: TCP

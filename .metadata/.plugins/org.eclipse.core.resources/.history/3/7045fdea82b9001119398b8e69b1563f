@@ -1,0 +1,22 @@
+package com.example.demo.service;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import com.example.demo.contollers.OrderClient;
+
+public class OrderCientService {
+
+	Logger logger = LoggerFactory.getLogger(OrderCientService.class);
+	OrderClient orderClient;
+	
+	public void orderClientService(OrderClient orderClient) {
+		this.orderClient=orderClient;
+	}
+	
+	public String orderService(String orderId) {
+		
+		String response = orderClient.processOrder(orderId);
+		return response;
+	}
+}

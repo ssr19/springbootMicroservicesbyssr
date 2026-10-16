@@ -1,0 +1,18 @@
+apiVersion: batch/v1
+kind: Job
+metadata:
+  name: numbersjob
+spec:
+  template:
+    metadata:
+      name: numberspod
+    spec:
+      containers:
+        - name: numberscontainer        
+          image: ubuntu:20.04
+          command:
+            - "bin/bash"
+            - "-c"
+            - "for i in 1 2 3 4 5 6 8 9 0 ; do echo $i ; done"
+      restartPolicy: Never    
+        

@@ -1,0 +1,2 @@
+spring.application.name=sb-test-restservice
+server.port=8087
